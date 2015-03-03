@@ -1,4 +1,4 @@
-# houht.github.io（侯海涛的blog）
+# houht.github.io（[侯海涛的blog](http://houht.github.io/) ）
 
 
 ##
