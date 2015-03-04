@@ -1,0 +1,46 @@
+---
+titl: houht的微笔记
+description: 软件开发,我的日志,屌丝传！
+note:
+  - title: 我的日志
+    main: 我的第一篇日志，2015年3月4号。
+  - title: note
+    main: <a href="http://www.zybuluo.com/mdeditor">markdown在线编辑器</a><br>
+---
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<style type="text/css" media="screen">
+		#content {
+			width: 960px;
+			position: relative;
+			left: 50%;
+			margin: 0px 0px 0px -480px;
+		}
+		{% include topa.css %}
+		#bottom {
+			position: relative;
+			left: 50%;
+			margin-left: -480px;
+			width: 960px;
+			text-align: center;
+			padding: 0px;
+		}
+	</style>
+	<title>{{ page.titl }}</title>
+</head>
+<body>
+{% include topa.html %}
+<div id="content">
+	<h1>{{ page.titl }}</h1>
+	{% for item in page.note %}
+	<div class="content">
+		<h2>{{ item.title }}</h2>
+		<p>{{ item.main }}</p>
+		<hr>
+	</div>
+	{% endfor %}
+</div>
+{% include bottoma.html %}
+</body>
+</html>
