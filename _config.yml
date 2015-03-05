@@ -1,4 +1,3 @@
-permalink: /:year/:month/:day/:title.html
 # 当修改文件时重新生成站点
 auto: true
 pygments: true
@@ -9,4 +8,4 @@ title: 侯海涛的Github博客
 production_url: http://houht.github.io
 author :
   name : houht
-  email : coleflowers@163.com
+  email : houht@vip.qq.com
