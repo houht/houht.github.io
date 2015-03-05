@@ -1,11 +1,22 @@
 ---
+
 layout: default
-title: 文章目录
+
+title: 我的 Blog
+
 ---
 
-<ul class="post-list">
-    {% for post in site.posts %}
-        <a href="{{post.url}}"> {{ post.title }}  </a>
-        {{ post.date | date: "%F" }} <br>
-    {% endfor %}
+<h2>{{ page.title }}</h2>
+
+<p>最新文章</p>
+
+<ul>
+
+{% for post in site.posts %}
+
+<li>{{ post.date date_to_string }} <a href="{{ post.url }}">
+{{ post.title }}</a></li>
+
+{% endfor %}
+
 </ul>
