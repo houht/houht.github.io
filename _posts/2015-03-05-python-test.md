@@ -48,6 +48,7 @@ for line in sys.stdin:
         print '%s\t%s' % (word, 1)
 
 ```
+
 * reducer.py
 
 ```python
@@ -90,6 +91,7 @@ if current_word == word:
     print '%s\t%s' % (current_word, current_count)
     
 ```
+
 * 测试
 
 ```shell
@@ -107,4 +109,6 @@ foo 	3
 labs 	1
 quux 	2
 ```
+
+
 
