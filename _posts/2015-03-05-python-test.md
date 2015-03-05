@@ -10,8 +10,8 @@ title: Python代码片段
 
 ```python
 
-    for i in range(97,123):
-        print  chr(i)
+for i in range(97,123):
+    print  chr(i)
 ```
 
 
@@ -19,7 +19,7 @@ title: Python代码片段
 
 ```python
 
-    import random
+import random
 
-    random.choice(['139','188','185','136','158','151'])+"".join(random.choice("0123456789") fori inrange(8))
+random.choice(['139','188','185','136','158','151']) + "".join(random.choice("0123456789") for i in range(8))
 ```
