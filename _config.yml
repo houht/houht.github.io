@@ -3,6 +3,9 @@ auto: true
 pygments: true
 baseurl: /houht.github.com
 #baseurl: /
+markdown: redcarpet
+redcarpet:
+    extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
 # 基本参数
 title: 侯海涛的Github博客
 production_url: http://houht.github.io
