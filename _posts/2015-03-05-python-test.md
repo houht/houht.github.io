@@ -97,7 +97,7 @@ if current_word == word:
 * 测试
 
 
-```shell
+```java
 
 $ echo "foo foo quux labs foo bar quux" | ./mapper.py
 foo 	 1
