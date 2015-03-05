@@ -94,3 +94,24 @@ if current_word == word:
 
 
 
+* 测试
+
+```shell
+
+hadoop@derekUbun:/usr/local/hadoop$ echo "foo foo quux labs foo bar quux" | ./mapper.py
+foo 	 1
+foo 	 1
+quux 	 1
+labs 	 1
+foo 	 1
+bar 	 1
+quux 	 1
+hadoop@derekUbun:/usr/local/hadoop$ echo "foo foo quux labs foo bar quux" |./mapper.py | sort |./reducer.py
+bar 	1
+foo 	3
+labs 	1
+quux 	2
+
+```
+
+
