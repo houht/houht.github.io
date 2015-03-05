@@ -96,7 +96,7 @@ if current_word == word:
 
 * 测试
 
-```shell
+```python
 
 hadoop@derekUbun:/usr/local/hadoop$ echo "foo foo quux labs foo bar quux" | ./mapper.py
 foo 	 1
