@@ -24,7 +24,7 @@ import random
 random.choice(['139','188','185','136','158','151']) + "".join(random.choice("0123456789") for i in range(8))
 ```
 
-## Python实现Hadoop MapReduce程序
+### Python实现Hadoop MapReduce程序
 
 * mapper.py
 
@@ -90,24 +90,6 @@ for line in sys.stdin:
 if current_word == word:
     print '%s\t%s' % (current_word, current_count)
     
-```
-
-* 测试
-
-```shell
-hadoop@derekUbun:/usr/local/hadoop$ echo "foo foo quux labs foo bar quux" | ./mapper.py
-foo 	 1
-foo 	 1
-quux 	 1
-labs 	 1
-foo 	 1
-bar 	 1
-quux 	 1
-hadoop@derekUbun:/usr/local/hadoop$ echo "foo foo quux labs foo bar quux" |./mapper.py | sort |./reducer.py
-bar 	1
-foo 	3
-labs 	1
-quux 	2
 ```
 
 
