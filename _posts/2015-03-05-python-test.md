@@ -96,6 +96,7 @@ if current_word == word:
 
 * 测试
 
+
 ```shell
 
 $ echo "foo foo quux labs foo bar quux" | ./mapper.py
