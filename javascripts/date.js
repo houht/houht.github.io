@@ -1,10 +1,10 @@
-
-		<script src="/javascripts/jquery-1.4.min.js"></script>
+<script src="http://www.pengyaou.com/jquery-1.4.min.js">
 		</script>
 		<script type="text/javascript">
 		$(document).ready(function(e) {
 			CalendarHandler.initialize();
 		});
+
 		var CalendarHandler = {
 			currentYear: 0,
 			currentMonth: 0,
@@ -12,11 +12,13 @@
 			initialize: function() {
 				$calendarItem = this.CreateCalendar(0, 0, 0);
 				$("#Container").append($calendarItem);
+
 				$("#context").css("height", $("#CalendarMain").height() - 65 + "px");
 				$("#center").css("height", $("#context").height() - 30 + "px");
 				$("#selectYearDiv").css("height", $("#context").height() - 30 + "px").css("width", $("#context").width() + "px");
 				$("#selectMonthDiv").css("height", $("#context").height() - 30 + "px").css("width", $("#context").width() + "px");
 				$("#centerCalendarMain").css("height", $("#context").height() - 30 + "px").css("width", $("#context").width() + "px");
+
 				$calendarItem.css("height", $("#context").height() - 30 + "px"); //.css("visibility","hidden");
 				$("#Container").css("height", "0px").css("width", "0px").css("margin-left", $("#context").width() / 2 + "px").css("margin-top", ($("#context").height() - 30) / 2 + "px");
 				$("#Container").animate({
@@ -58,6 +60,8 @@
 				$(".currentDay").show();
 				$("#selectMonthDiv").children().remove();
 				for (var i = 1; i < 13; i++) {
+
+
 					if (i == this.currentMonth) $("#selectMonthDiv").append($("<div class=\"currentMontSd\" id=\"" + i + "\">" + i + "月</div>"));
 					else $("#selectMonthDiv").append($("<div id=\"" + i + "\">" + i + "月</div>"));
 					if (i == 1 || i == 5 || i == 9) $("#selectMonthDiv").find("#" + i).css("border-left-color", "#fff");
@@ -123,17 +127,20 @@
 				//var nowWeek=weekDate.getDay();
 				//获取上个月的天数
 				var lastMonthDaysNub = this.CalculateMonthDays((nowMonth - 1), nowYear);
+
 				if (nowWeek != 0) {
 					//生成上月剩下的日期
 					for (var i = (lastMonthDaysNub - (nowWeek - 1)); i < lastMonthDaysNub; i++) {
 						$dayItem.append("<div class=\"item lastItem\"><a>" + (i + 1) + "</a></div>");
 					}
 				}
+
 				//生成当月的日期
 				for (var i = 0; i < nowDaysNub; i++) {
 					if (i == (nowDay - 1)) $dayItem.append("<div class=\"item currentItem\"><a>" + (i + 1) + "</a></div>");
 					else $dayItem.append("<div class=\"item\"><a>" + (i + 1) + "</a></div>");
 				}
+
 				//获取总共已经生成的天数
 				var hasCreateDaysNub = nowWeek + nowDaysNub;
 				//如果小于42，往下个月推算
@@ -142,6 +149,7 @@
 						$dayItem.append("<div class=\"item lastItem\"><a>" + (i + 1) + "</a></div>");
 					}
 				}
+
 				return $dayItem;
 			},
 			CSS: function() {
@@ -164,6 +172,7 @@
 					else d = 1;
 					$calendarItem = this.CreateCalendar(y, m, d);
 					$("#Container").append($calendarItem);
+
 					this.CSS();
 					this.isRunning = true;
 					$($("#Container").find(".dayItem")[0]).animate({
@@ -221,6 +230,7 @@
 					var nowTime = nowDate.getHours() + ":" + nowDate.getMinutes() + ":" + nowDate.getSeconds();
 					$("#footNow").html(nowTime);
 				}, 1000);
+
 			}
 		}
 		</script>
