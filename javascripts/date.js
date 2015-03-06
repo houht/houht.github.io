@@ -1,4 +1,4 @@
-<script src="http://www.pengyaou.com/jquery-1.4.min.js">
+	<script src="http://www.pengyaou.com/jquery-1.4.min.js">
 		</script>
 		<script type="text/javascript">
 		$(document).ready(function(e) {
@@ -233,4 +233,4 @@
 
 			}
 		}
-		</script>
+		</script>	 
