@@ -1,0 +1,554 @@
+---
+
+layout: default
+
+title: <img src="https://cloud.githubusercontent.com/assets/6347218/6502809/e24d41a6-c361-11e4-95c5-c7e29b526f5b.gif"  alt="" />Openstack架构解析
+
+---
+
+  <p>
+    <span>OpenStack是一个</span>
+    <span>
+      <a href="http://baike.baidu.com/view/3749171.htm" rel="nofollow,noindex">
+        <span>
+          <span>
+            <span>云平台</span>
+          </span>
+        </span>
+      </a>
+    </span>
+    <span>管理的项目，它不是一个软件。这个项目由几个主要的组件组合起来完成一些具体的工作</span>
+    <span>。</span>
+  </p>
+  <p>
+    <span>想要了解</span>
+    <span>openstack，第一步我们可以观察他的概念图：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img2.tuicool.com/muy2u2.jpg" />
+      &nbsp;（本图来自互联网）    </span>
+  </p>
+  <p>
+    <span>图片所在博客地址：</span>
+    <span>
+      <a href="http://my.oschina.net/chape/blog/119995" rel="nofollow,noindex">
+        <span>http://my.oschina.net/chape/blog/119995</span>
+      </a>
+    </span>
+  </p>
+  <p>
+    <span>原文没有给概念图做太多解释，英语不好的同学表示很受伤，因此我愿意做这个活雷锋：</span>
+  </p>
+  <p>
+    <span>下面是翻译+解释：</span>
+  </p>
+  <table>
+    <tr>
+      <td width="96">
+        <p>
+          <span>Integration</span>
+        </p>
+      </td>
+      <td width="138">
+        <p>
+          <span>Presentation</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>Logic</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>Resources</span>
+        </p>
+      </td>
+      <td width="91">
+        <p>
+          <span>Management</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+        <p>
+          <span>整合</span>
+        </p>
+      </td>
+      <td width="138">
+        <p>
+          <span>表现层</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>逻辑层（控制层）</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>资源层</span>
+        </p>
+      </td>
+      <td width="91">
+        <p>
+          <span>管理层</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+        <p>
+          <span>Identity</span>
+        </p>
+      </td>
+      <td width="138">
+        <p>
+          <span>Compute&nbsp;API</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>Orchestration</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>Compute</span>
+        </p>
+      </td>
+      <td width="91">
+        <p>
+          <span>Admin&nbsp;API</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+        <p>
+          <span>认证</span>
+        </p>
+      </td>
+      <td width="138">
+        <p>
+          <span>计算接口</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>部署</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>计算</span>
+        </p>
+      </td>
+      <td width="91">
+        <p>
+          <span>管理员API</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+        <p>
+          <span>Billing</span>
+        </p>
+      </td>
+      <td width="138">
+        <p>
+          <span>Image&nbsp;API</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>Scheduling</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>Volume</span>
+        </p>
+      </td>
+      <td width="91">
+        <p>
+          <span>Monitoring</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+        <p>
+          <span>计费</span>
+        </p>
+      </td>
+      <td width="138">
+        <p>
+          <span>映像接口</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>调度</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>卷（</span>
+          <span>硬盘上的存储区域</span>
+          <span>）</span>
+        </p>
+      </td>
+      <td width="91">
+        <p>
+          <span>测控</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+      </td>
+      <td width="138">
+        <p>
+          <span>User&nbsp;dashboard</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>Policy</span>
+        </p>
+      </td>
+      <td width="104">
+        <p>
+          <span>Network</span>
+        </p>
+      </td>
+      <td width="91">
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+      </td>
+      <td width="138">
+        <p>
+          <span>仪表盘（显示系统各种参数）</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>策略</span>
+        </p>
+      </td>
+      <td width="104">
+      </td>
+      <td width="91">
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+      </td>
+      <td width="138">
+        <p>
+          <span>Customer&nbsp;portal</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>Image&nbsp;Register</span>
+        </p>
+      </td>
+      <td width="104">
+      </td>
+      <td width="91">
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+      </td>
+      <td width="138">
+        <p>
+          <span>顾客门户（就是UI）</span>
+        </p>
+      </td>
+      <td width="131">
+        <p>
+          <span>映像注册表</span>
+        </p>
+      </td>
+      <td width="104">
+      </td>
+      <td width="91">
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+      </td>
+      <td width="138">
+      </td>
+      <td width="131">
+        <p>
+          <span>Logging</span>
+        </p>
+      </td>
+      <td width="104">
+      </td>
+      <td width="91">
+      </td>
+    </tr>
+    <tr>
+      <td width="96">
+      </td>
+      <td width="138">
+      </td>
+      <td width="131">
+        <p>
+          <span>日志（很多地方都会有的，可以查错，当系统出错崩溃时，也可以根据日志对系统进行还原）</span>
+        </p>
+      </td>
+      <td width="104">
+      </td>
+      <td width="91">
+      </td>
+    </tr>
+  </table>
+  <p>
+    <span>此图主要回答了openstack为我们提供什么服务，它的功能有哪些，当然概念图只是为我们提供了一个概念，而正如一开始介绍的那样——</span>
+    <span>OpenStack是一个</span>
+    <span>
+      <a href="http://baike.baidu.com/view/3749171.htm" rel="nofollow,noindex">
+        <span>
+          <span>
+            <span>云平台</span>
+          </span>
+        </span>
+      </a>
+    </span>
+    <span>管理的项目，它不是一个软件</span>
+    <span>，</span>
+    <span>这个项目由几个主要的组件组合起来完成一些具体的工作</span>
+    <span>。搞清楚由哪些组件完成这些功能，我们需要借助图</span>
+    <span>2：</span>
+  </p>
+  <p>
+    <span>此图为Grizzly的架构图</span>
+    <span>，</span>
+    <span>简述了套件之间是如何运作的</span>
+    <span>：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img1.tuicool.com/2ayUZn.jpg" />
+      &nbsp;（本图来自网络）    </span>
+  </p>
+  <p>
+    <span>OpenStack</span>
+    <span>的</span>
+    <span>Grizzly版共有7个不同功能套件</span>
+    <span>，</span>
+    <span>分别是</span>
+    <span>：</span>
+  </p>
+  <p>
+    <span>运算套件Nova</span>
+    <span>：</span>
+    <span>openstack中的核心，负责计算和实施一些策略，很多组件都要通过他进行调度（Nova中的nova-api负责所以API的调度，初始化大多数部署，执行部分策略）</span>
+  </p>
+  <p>
+    <span>对象储存套件Swift</span>
+    <span>：</span>
+    <span>分布式对象存储，功能类似于</span>
+    <span>hadoop，可是跟hadoop又有很大不同；在openstack中，swift用于存储创建虚拟机的镜像文件</span>
+  </p>
+  <p>
+    <span>区块储存套件Cinder</span>
+    <span>：</span>
+    <span>配分块存储，给虚拟机增加一个块存储设备（有点类似于移动硬盘）；</span>
+  </p>
+  <p>
+    <span>网通套件Quantum</span>
+    <span>：</span>
+    <span>通过</span>
+    <span>API来管理的网络架构系统</span>
+    <span>；</span>
+  </p>
+  <p>
+    <span>身分识别套件Keystone</span>
+    <span>：</span>
+    <span>身份认证功能；</span>
+  </p>
+  <p>
+    <span>镜像檔管理套件Glance</span>
+    <span>：</span>
+    <span>对镜像文件进行管理；</span>
+  </p>
+  <p>
+    <span>仪表板套件Horizon</span>
+    <span>：</span>
+    <span>就是一个</span>
+    <span>UI；</span>
+  </p>
+  <p>
+    <span>以上是我的一些通俗解释，如果大家觉得不够详尽，可以查阅一下资料：</span>
+  </p>
+  <p>
+    <span>（快速入手Openstack&nbsp;技术架构功能解读）</span>
+  </p>
+  <p>
+    <span>http://www.enet.com.cn/article/2013/0702/A20130702294145_2.shtml</span>
+  </p>
+  <p>
+    <span>这是对openstack架构的一种解释，但用过百度一下的朋友就肯定会发现，网上流传着好几个不同版本的架构图，几种架构图描述的方式都相差很大，第一眼看上去甚至都不是一个东西……</span>
+  </p>
+  <p>
+    <span>面对这种情况，我们可以假设他们都是对的，然后找出他们之间的联系，这样我们也可以加深对openstack的理解；</span>
+  </p>
+  <p>
+    <span>现在我们看一下openstack的逻辑架构：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img1.tuicool.com/Q3I3Iv.jpg" />
+      &nbsp;（本图来自互联网）    </span>
+  </p>
+  <p>
+    <span>a)&nbsp;终端用户通过和nova-api对话来与OpenStack&nbsp;Compute交互。</span>
+  </p>
+  <p>
+    <span>b)&nbsp;OpenStack&nbsp;Compute守护进程之间通过</span>
+    <span>队列(行为)和数据库(信息)</span>
+    <span>来交换信息，以执行API请求。</span>
+    <span>（交换信息的方式我们以后会讲）</span>
+  </p>
+  <p>
+    <span>c)</span>
+    <span>&nbsp;OpenStack&nbsp;Glance基本上是独立的基础架构，OpenStack&nbsp;Compute通过Glance&nbsp;API来和它交互</span>
+    <span>。</span>
+  </p>
+  <p>
+    <span>其各个组件的情况如下：</span>
+  </p>
+  <p>
+    <span>
+      <span>
+        a)        <span>&nbsp;</span>
+      </span>
+    </span>
+    <span>nova-api守护进程是OpenStack&nbsp;Compute的中心。它为所有API查询(OpenStack&nbsp;API&nbsp;或&nbsp;EC2&nbsp;API)提供端点，初始化绝大多数部署活动(比如运行实例)，以及实施一些策略(绝大多数的配额检查)。</span>
+  </p>
+  <p>
+    <span>因此很多相对于</span>
+    <span>openstack独立的基础架构是跟nova-api交换信息的，而不是向其他进程那样使用队列和数据库；</span>
+  </p>
+  <p>
+    <span>b)</span>
+    <span>&nbsp;nova-compute进程主要是一个创建和终止虚拟机实例的Worker守护进程</span>
+    <span>。基本原理很简单：</span>
+    <span>从队列中接收行为，然后在更新数据库的状态时，执行一系列的系统命令执行他们</span>
+    <span>。</span>
+  </p>
+  <p>
+    <span>c)&nbsp;</span>
+    <span>nova-volume管理映射到计算机实例的卷的创建、附加和取消</span>
+    <span>。这些卷可以来自很多提供商，比如，ISCSI和AoE。</span>
+  </p>
+  <p>
+    <span>d)&nbsp;Nova-network&nbsp;worker守护进程类似于nova-compute和nova-volume。它从队列中接收网络任务，然后执行任务以操控网络，比如创建bridging&nbsp;interfaces或改变iptables&nbsp;rules。</span>
+  </p>
+  <p>
+    <span>e)</span>
+    <span>&nbsp;Queue提供中心hub，为守护进程传递消息</span>
+    <span>。当前用</span>
+    <span>RabbitMQ</span>
+    <span>实现。但是理论上能是python&nbsp;ampqlib支持的任何AMPQ消息队列。</span>
+  </p>
+  <p>
+    <span>f)&nbsp;SQL&nbsp;database</span>
+    <span>存储</span>
+    <span>云基础架构中的绝大多数编译时和运行时</span>
+    <span>状态</span>
+    <span>。当前广泛使用的数据库是sqlite3(仅适合测试和开发工作)，MySQL和PostgreSQL。</span>
+  </p>
+  <p>
+    <span>g)&nbsp;OpenStack&nbsp;Glance，是一个单独的项目，它是一个compute架构中可选的部分，分为三个部分：</span>
+  </p>
+  <p>
+    <span>glance-api</span>
+    <span>:</span>
+    <span>glance-api接受API调用</span>
+    <span>;</span>
+  </p>
+  <p>
+    <span>glance-registry</span>
+    <span>:</span>
+    <span>&nbsp;</span>
+    <span>glance-registry负责存储和检索镜像的元数据，实际的Image&nbsp;Blob存储在Image&nbsp;Store中</span>
+    <span>;</span>
+  </p>
+  <p>
+    <span>the&nbsp;image&nbsp;store</span>
+    <span>:</span>
+    <span>Image&nbsp;Store可以是多种不同的Object&nbsp;Store，包括OpenStack&nbsp;Object&nbsp;Storage&nbsp;(Swift)</span>
+    <span>;</span>
+  </p>
+  <p>
+    <span>h)&nbsp;最后，user&nbsp;dashboard是另一个可选的项目。OpenStack&nbsp;Dashboard提供了一个OpenStack&nbsp;Compute界面来给应用开发者和devops&nbsp;staff类似API的功能。当前它是作为Django&nbsp;web&nbsp;Application来实现的。当然，也有其他可用的Web前端。</span>
+    <span>（</span>
+    <span>说白了就是个</span>
+    <span>UI</span>
+    <span>）</span>
+  </p>
+  <p>
+    <span>让我们看看这个逻辑图在概念图上的映射：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img2.tuicool.com/m2mURn.jpg" />
+      &nbsp;（本图来自互联网）    </span>
+  </p>
+  <p>
+    <span>通过这样一张图我们就可以很清楚地了解各个进程的功能，我们同样可以把各组件映射到它的概念图上：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img1.tuicool.com/uQvIVn.png" />
+      &nbsp;&nbsp;    </span>
+  </p>
+  <p>
+    <span>我们也可以用以下的表示方式来表现它的架构：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img1.tuicool.com/IfUzyi.jpg" />
+      &nbsp;（本图来着互联网）    </span>
+  </p>
+  <p>
+    <span>相关博客：</span>
+    <span>
+      <a href="http://hi.baidu.com/wylinux/item/e1cc323af851d0f7e6bb7a5a" rel="nofollow,noindex">
+        <span>http://hi.baidu.com/wylinux/item/e1cc323af851d0f7e6bb7a5a</span>
+      </a>
+    </span>
+  </p>
+  <p>
+    <span>或者用思维导图表示：</span>
+  </p>
+  <p>
+    <span>
+      <img alt="" src="http://img1.tuicool.com/yq2iI3.png" />
+      &nbsp;（本图来着互联网）    </span>
+  </p>
+  <p>
+    <span>相关博客：</span>
+    <span>
+      <a href="http://www.chenshake.com/openstack-component-introduction/" rel="nofollow,noindex">
+        <span>http://www.chenshake.com/openstack-component-introduction/</span>
+      </a>
+    </span>
+  </p>
+  <p>
+    <span>通过这样几个图，我们基本上可以梳理清openstack的架构了，通过比较不同表达方式，我们可以更透彻地理解一个事物，就像学生时代一直强调的一题多解一样。</span>
+  </p>
+  &lt;!--EndFragment--&gt;</div>
