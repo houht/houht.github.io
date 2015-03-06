@@ -1,6 +1,4 @@
-<script type="text/javascript">
-</script> 
-</body>
+
 		<script src="/javascripts/jquery-1.4.min.js"></script>
 		</script>
 		<script type="text/javascript">
