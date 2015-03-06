@@ -48,7 +48,7 @@ houht.github.io
 </FONT>
 </p>
 
-		<p id="CalendarMain"> 
+		<div id="CalendarMain"> 
 			<div id="title"><a class="selectBtn month" href="javascript:" onclick="CalendarHandler.CalculateLastMonthDays();"><</a><a class="selectBtn selectYear" href="javascript:" onClick="CalendarHandler.CreateSelectYear();">2014年</a><a class="selectBtn selectMonth" onClick="CalendarHandler.CreateSelectMonth()">6月</a> <a class="selectBtn nextMonth" href="javascript:" onClick="CalendarHandler.CalculateNextMonthDays();">></a><a class="selectBtn currentDay" href="javascript:" onClick="CalendarHandler.CreateCurrentCalendar(0,0,0);">今天</a></div>
 			<div id="context">
 				<div class="week">
@@ -69,9 +69,9 @@ houht.github.io
 						<div id="selectMonthDiv"></div>
 					</div>
 				</div>
-				<!--<div class="item"><a>1</a></div> <div class="item"><a>2</a></div> <div class="item currentItem"><a>3</a></div> <div class="item"><a>4</a></div> <div class="item"><a>5</a></div> <div class="item"><a>6</a></div> <div class="item"><a>7</a></div>--></div>
+				</div>
 			<div id="foot"><a id="footNow">19:14:34</a></div>
-		</p>
+		</div>
 		
 		
 		<style type="text/css">
@@ -245,8 +245,6 @@ body {
 		
 		
 	<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2e05dec2bf760074926a79e46eafbe40' type='text/javascript'%3E%3C/script%3E"));
 </script> 
 </body>
 		<script src="http://www.pengyaou.com/jquery-1.4.min.js">
