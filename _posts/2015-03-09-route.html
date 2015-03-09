@@ -4,7 +4,7 @@ title: 路由配置命令
 ---
 
 
-##1. 使用ifconfig命令配置并查看网络接口情况
+## 1. 使用ifconfig命令配置并查看网络接口情况
 示例1: 配置eth0的IP，同时激活设备:
 ifconfig eth0 192.168.4.1 netmask 255.255.255.0 up
 示例2: 配置eth0别名设备 eth0:1 的IP，并添加路由
@@ -16,7 +16,7 @@ ifconfig eth0:1 up(down)
 ifconfig (eth0)
 
 
-##2. 使用route 命令配置路由表
+## 2. 使用route 命令配置路由表
 示例1:添加到主机路由
 route add –host 192.168.4.2 dev eth0:1
 route add –host 192.168.4.1 gw 192.168.4.250
@@ -32,7 +32,7 @@ route del –host 192.168.4.1 dev eth0:1
 route 或 route -n (-n 表示不解析名字,列出速度会比route 快)
 
 
-##3.ARP 管理命令
+## 3.ARP 管理命令
 示例1:查看ARP缓存
 arp
 示例2: 添加
@@ -41,7 +41,7 @@ arp –s IP MAC
 arp –d IP
 
 
-##4. ip是iproute2软件包里面的一个强大的网络配置工具，它能够替代一些传统的网络管理工具。例如：ifconfig、route等,
+## 4. ip是iproute2软件包里面的一个强大的网络配置工具，它能够替代一些传统的网络管理工具。例如：ifconfig、route等,
 上面的示例完全可以用下面的ip命令实现,而且ip命令可以实现更多的功能.下面介绍一些示例:
 4.0 ip命令的语法
 ip命令的用法如下：
@@ -74,7 +74,7 @@ TX errors: aborted fifo window heartbeat
 0 0 0 332
 这个命令等于传统的 ifconfig eth0
 
-##5. ip address命令
+## 5. ip address命令
 5.1 ip address add--添加一个新的协议地址. 缩写：add、a
 示例1：为每个地址设置一个字符串作为标签。为了和Linux-2.0的网络别名兼容，这个字符串必须以设备名开头，接着一个冒号，
 ip addr add local 192.168.4.1/28 brd + label eth0:1 dev eth0
@@ -92,7 +92,7 @@ ip -s -s a f to 10/8
 ip -4 addr flush label "eth0"
 
 
-##6. ip neighbour--neighbour/arp表管理命令
+## 6. ip neighbour--neighbour/arp表管理命令
 缩写 neighbour、neighbor、neigh、n
 命令 add、change、replace、delete、fulsh、show(或者list)
 6.1 ip neighbour add -- 添加一个新的邻接条目
@@ -114,7 +114,7 @@ ip neigh del 10.0.0.3 dev eth0
 ip -s -s n f 193.233.7.254
 
 
-##7. 路由表管理
+## 7. 路由表管理
 7.1.缩写 route、ro、r
 7.2.路由表
 从Linux-2.2开始，内核把路由归纳到许多路由表中，这些表都进行了编号，编号数字的范围是1到255。另外，
@@ -180,7 +180,7 @@ ip r g 193.233.7.82 from 193.233.7.82 iif eth0
 cache  mtu 1500 rtt 300 iif eth0
 
 
-##8. ip route -- 路由策略数据库管理命令
+## 8. ip route -- 路由策略数据库管理命令
 命令
 add、delete、show(或者list)
 注意：策略路由(policy routing)不等于路由策略(rouing policy)。
@@ -205,7 +205,7 @@ ip ru del prio 32767
 32767: from all lookup 253
 
 
-##9. ip maddress -- 多播地址管理
+## 9. ip maddress -- 多播地址管理
 缩写：show、list、sh、ls、l
 9.1.ip maddress show -- 列出多播地址
 示例1: ip maddr ls dummy
@@ -221,7 +221,7 @@ link 01:00:5e:00:00:01
 示例3: 删除 ip maddr del 33:33:00:00:00:01 dev dummy
 
 
-##10.ip mroute -- 多播路由缓存管理
+## 10.ip mroute -- 多播路由缓存管理
 10.1. ip mroute show -- 列出多播路由缓存条目
 缩写：show、list、sh、ls、l
 示例1:查看 ip mroute ls
@@ -233,7 +233,7 @@ link 01:00:5e:00:00:01
 9383 packets, 300256 bytes
 
 
-##11. ip tunnel -- 通道配置
+## 11. ip tunnel -- 通道配置
 缩写
 tunnel、tunl
 11.1.ip tunnel add -- 添加新的通道
@@ -247,9 +247,11 @@ ip tunnel add Cisco mode sit remote 192.31.7.104 local 192.203.80.1 ttl 32
 示例1: ip -s tunl ls Cisco
 
 
-##12. ip monitor和rtmon -- 状态监视
+## 12. ip monitor和rtmon -- 状态监视
 ip命令可以用于连续地监视设备、地址和路由的状态。这个命令选项的格式有点不同，命令选项的名字叫做monitor，接着是操作对象：
 ip monitor [ file FILE ] [ all | OBJECT-LIST ]
 示例1: rtmon file /var/log/rtmon.log
 示例2: ip monitor file /var/log/rtmon.log rgoogle_protectAndRun("render_ads.js::google_render_ad", google_handleError, google_render_ad);
+
+
 
