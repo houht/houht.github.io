@@ -1,0 +1,32 @@
+---
+
+layout: default
+
+title: 我的日志
+
+---
+
+
+<p>最新文章</p>
+
+<dl>
+
+{% for post in site.posts %}
+
+<dt><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></dt>
+<dd>发布时间:{{ post.date | date: "%F" }}  </dd>
+
+
+{% endfor %}
+
+</dl>
+
+<!--p>北京时间：{{  site.time | date_to_rfc822  }}</p-->
+
+<style type="text/css">
+h4{font-size:14px; color:#333;}
+a{color:#069; text-decoration:none;}
+dl{ border:dashed 1px #666; font-size:14px; padding:4px; background:#FDFBDB;}
+dt{clear:left; float:left; padding:4px 0;}
+dd{ text-align:right;  padding:4px 0;font-size:16px; color:#666;}
+</style>
